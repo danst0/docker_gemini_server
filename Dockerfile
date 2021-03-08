@@ -5,11 +5,6 @@ RUN apt-get -y install openssl
 
 WORKDIR /usr/src/agate
 RUN cargo install agate
-#COPY ./Cargo.* ./
-#COPY ./src ./src/
-#RUN ls -l
-#RUN which agate
-#RUN cargo build --release
 
 RUN openssl req -x509 -newkey rsa:4096 -keyout gemini-key.rsa \
   -out gemini-cert.pem -days 4096 -nodes -subj "/CN=g.dumke.me"
