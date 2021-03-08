@@ -1,16 +1,11 @@
-# nnix.com gemini capsule
-This is a Docker container source which builds a container for the excellent Agate Gemini server (from https://github.com/mbrubeck/agate).
+# DDD gemini server
 
-My version of this contain references /var/capsule in the host on which it runs for its static content, and I update this directory through a cronjob running each minute ("gitcron" stored here for reference).
+(building upon nnix.com gemini capsule)
+This is a Docker compose container for the Agate Gemini server (from https://github.com/mbrubeck/agate).
 
-## To redeploy the container:
+The data directory is meant to be /srv/docker/gemini/capsule; this can be changed in the docker-compose.yml file
+
+## To deploy the container just issue:
 ```
-docker pull nnix/gemini
-docker ps -a
-docker rm [whatever the nnix/gemini process is in that list]
-docker container run -d -it --name nnix.com-gemini --mount type=bind,source=/var/capsule,target=/usr/local/gemini/geminidocs --publish 1965:1965 nnix/gemini:latest
-gemini:latest
+docker-compose up
 ```
-
-## Things coming up:
-- git filesystem for the static content, to get the index and other pages into a repo site.
